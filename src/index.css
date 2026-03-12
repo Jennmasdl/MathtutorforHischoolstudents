@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- MathQuill 스타일 재정의 ---- */
+.mq-editable-field,
+.mq-math-mode {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.mq-editable-field {
+  @apply border border-primary-300 rounded-lg px-3 py-2 w-full min-h-[44px] bg-white outline-none;
+  transition: border-color 0.15s;
+}
+
+.mq-editable-field.mq-focused {
+  @apply border-primary ring-2 ring-primary-100;
+}
+
+/* KaTeX display block 중앙 정렬 방지 */
+.katex-display {
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+/* 팔레트 버튼 기본 스타일 */
+@layer components {
+  .palette-btn {
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-sm font-medium
+           bg-white border border-gray-200 rounded-lg shadow-sm
+           hover:bg-primary-50 hover:border-primary-300 hover:text-primary-700
+           active:bg-primary-100
+           transition-all duration-100 cursor-pointer select-none;
+  }
+
+  .category-card {
+    @apply flex flex-col items-center gap-2 p-5 rounded-2xl border-2 cursor-pointer
+           transition-all duration-200;
+  }
+
+  .category-card.selected {
+    @apply border-primary bg-primary-50 text-primary-700;
+  }
+
+  .category-card:not(.selected) {
+    @apply border-gray-200 bg-white hover:border-primary-300 hover:bg-primary-50;
+  }
+
+  .level-chip {
+    @apply px-5 py-2 rounded-full border-2 text-sm font-semibold cursor-pointer
+           transition-all duration-150;
+  }
+
+  .level-chip.selected {
+    @apply border-primary bg-primary text-white;
+  }
+
+  .level-chip:not(.selected) {
+    @apply border-gray-200 bg-white text-gray-600 hover:border-primary-300;
+  }
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
